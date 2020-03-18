@@ -1,0 +1,10 @@
+# Ignore dotfiles files other than .gitignore itself
+.*
+!/.gitignore
+
+# Ignore egg-info from installing
+*.egg-info
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]

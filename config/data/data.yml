@@ -1,0 +1,10 @@
+# global data project repo config file
+repo:
+  description: This is the description of a repo within the DATA space.
+  project:
+    key: DATA
+
+default-reviewers:
+  - bnoronha@socialsolutions.com
+  - svelazquez@socialsolutions.com
+  - lwalker@socialsolutions.com

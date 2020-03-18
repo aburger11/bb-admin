@@ -1,0 +1,13 @@
+# global devops project repo config file
+repo:
+  description: This is the default description of a repo within the DO space.
+  project:
+    key: DO
+
+default-reviewers:
+  - djackson@socialsolutions.com
+  - jgentile@socialsolutions.com
+  - mstedding@socialsolutions.com
+  - asnake@socialsolutions.com
+  - mmoeller@socialsolutions.com
+  - ssmith@socialsolutions.com

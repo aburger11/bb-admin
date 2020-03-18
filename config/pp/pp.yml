@@ -1,0 +1,10 @@
+# global pp project repo config file
+repo:
+  description: This is the description of a repo within the PP (Participant Portal) space.
+  project:
+    key: PP
+
+default-reviewers:
+  - anixon@socialsolutions.com
+  - osalinas@socialsolutions.com
+  - asmith@socialsolutions.com

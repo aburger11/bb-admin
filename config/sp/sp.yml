@@ -1,0 +1,12 @@
+# global sp project repo config file
+repo:
+  description: This is the description of a repo within the SP (SSG Platform) space.
+  project:
+    key: SP
+
+default-reviewers:
+  - bnoronha@socialsolutions.com
+  - jalexander@socialsolutions.com
+  - dbrowning@socialsolutions.com
+  - kmaschi@socialsolutions.com
+  - smorris@socialsolutions.com

@@ -1,0 +1,12 @@
+# global er project repo config file
+repo:
+  description: This is the description of a repo within the ER (Enterprise Reporting) space.
+  project:
+    key: ER
+
+default-reviewers:
+  - evaripatis@socialsolutions.com
+  - jalexander@socialsolutions.com
+  - dbrowning@socialsolutions.com
+  - smorris@socialsolutions.com
+  - kmaschi@socialsolutions.com

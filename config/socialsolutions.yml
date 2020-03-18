@@ -1,0 +1,246 @@
+global:
+  bb_api_base_endpoint: https://api.bitbucket.org/2.0
+  workspace: social-solutions
+repo:
+  scm: git
+  website: null
+  has_wiki: false
+  fork_policy: no_public_forks
+  mainbranch:
+    type: branch
+    name: master
+    # ^ Does not work. Open bug @ https://jira.atlassian.com/browse/BCLOUD-13306
+  type: repository
+  is_private: true
+  description: This is the description of my repo.
+
+default-reviewers:
+  - jcoffey@socialsolutions.com
+
+pipelines-environments:
+  dev:
+    category:
+      name: Dev
+    restrictions:
+      admin_only: false
+      type: deployment_restrictions_configuration
+    environment_lock_enabled: true
+    lock:
+      type: deployment_environment_lock_open
+      name: OPEN
+    deployment_gate_enabled: false
+    rank: 0
+    change_request_config:
+      configured: false
+    hidden: true
+    type: deployment_environment
+    slug: dev
+    environment_type:
+      type: deployment_environment_type
+      name: Test
+      rank: 0
+    name: dev
+  stage:
+    category:
+      name: Stage
+    restrictions:
+      admin_only: false
+      type: deployment_restrictions_configuration
+    environment_lock_enabled: true
+    lock:
+      type: deployment_environment_lock_open
+      name: OPEN
+    deployment_gate_enabled: false
+    rank: 1
+    change_request_config:
+      configured: false
+    hidden: true
+    type: deployment_environment
+    slug: stage
+    environment_type:
+      type: deployment_environment_type
+      name: Staging
+      rank: 1
+    name: stage
+  prod:
+    category:
+      name: Prod
+    restrictions:
+      # Only admins can push to this environment
+      admin_only: true
+      type: deployment_restrictions_configuration
+    environment_lock_enabled: true
+    lock:
+      type: deployment_environment_lock_open
+      name: OPEN
+    deployment_gate_enabled: false
+    rank: 0
+    change_request_config:
+      configured: false
+    hidden: false
+    type: deployment_environment
+    slug: prod
+    environment_type:
+      type: deployment_environment_type
+      name: Production
+      rank: 2
+    name: prod
+
+pipelines-config:
+  enabled: true
+
+branching-model:
+  development:
+    name: develop
+    branch:
+      type: branch
+      name: develop
+    use_mainbranch: false
+  branch_types:
+    - kind: release
+      prefix: release/
+    - kind: hotfix
+      prefix: hotfix/
+    - kind: feature
+      prefix: feature/
+    - kind: bugfix
+      prefix: bugfix/
+  production:
+    name: master
+    branch:
+      type: branch
+      name: master
+    use_mainbranch: false
+  type: branching_model
+
+branch-restrictions:
+  # Require 2 approvals to merge to master
+  master-approvals-to-merge:
+    kind: require_approvals_to_merge
+    users: []
+    pattern: master
+    value: 2
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  # Require one default reviewer to have approved to merge to master
+  master-merge-default-reviewers:
+    kind: require_default_reviewer_approvals_to_merge
+    users: []
+    pattern: master
+    value: 1
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  # Nobody can push straight to master
+  master-restrict-push:
+    kind: push
+    users: []
+    pattern: master
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  # Nobody can overwrite history via a force
+  master-restrict-force:
+    kind: force
+    users: []
+    pattern: master
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  # Nobody can delete the master branch
+  master-restrict-delete:
+    kind: delete
+    users: []
+    pattern: master
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  develop-approvals-to-merge:
+    kind: require_approvals_to_merge
+    users: []
+    pattern: develop
+    value: 2
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  develop-merge-default-reviewers:
+    kind: require_default_reviewer_approvals_to_merge
+    users: []
+    pattern: develop
+    value: 1
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  develop-restrict-force:
+    kind: force
+    users: []
+    pattern: develop
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  develop-restrict-delete:
+    kind: delete
+    users: []
+    pattern: develop
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  develop-restrict-push:
+    kind: push
+    users: []
+    pattern: develop
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  bugfix-restrict-force-branching-model:
+    kind: force
+    users: []
+    pattern: ''
+    value: null
+    branch_match_kind: branching_model
+    groups: []
+    branch_type: bugfix
+    type: branchrestriction
+  feature-restrict-force-branching-model:
+    kind: force
+    users: []
+    pattern: ''
+    value: null
+    branch_match_kind: branching_model
+    groups: []
+    branch_type: feature
+    type: branchrestriction
+  hotfix-restrict-delete-branching-model:
+    kind: delete
+    users: []
+    pattern: ''
+    value: null
+    branch_match_kind: branching_model
+    groups: []
+    branch_type: hotfix
+    type: branchrestriction
+  hotfix-restrict-force-branching-model:
+    kind: force
+    users: []
+    pattern: ''
+    value: null
+    branch_match_kind: branching_model
+    groups: []
+    branch_type: hotfix
+    type: branchrestriction
+  release-restrict-force-branching-model:
+    kind: force
+    users: []
+    pattern: ''
+    value: null
+    branch_match_kind: branching_model
+    groups: []
+    branch_type: release
+    type: branchrestriction

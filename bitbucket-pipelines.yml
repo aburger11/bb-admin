@@ -1,0 +1,34 @@
+image: python:3.7.4
+pipelines:
+  default:
+    - step:
+        name: install & run unit tests
+        script:
+          - pip install --editable .
+          - python -m unittest discover tests -v
+    - step:
+        name: Step 3
+        trigger: manual
+        script:
+          - echo "This is step number three."
+  branches:
+    master:
+      - step:
+          name: install & run unit tests
+          script:
+            - pip install --editable .
+            - python -m unittest discover tests -v
+      - step:
+          name: create and push to ecr
+          trigger: manual
+          deployment: dev
+          services:
+            - docker
+          script:
+            - pip install --editable .
+            - pip install awscli
+            - export LOCAL_TAG=$(grep 'version=' setup.py |sed -E -e "s/^.+version='(.+)',/\1/")
+            - aws ecr get-login --no-include-email --region us-east-1 | bash
+            - docker build -t cops/bb-admin:$LOCAL_TAG .
+            - docker tag cops/bb-admin:$LOCAL_TAG 386123533085.dkr.ecr.us-east-1.amazonaws.com/cops/bb-admin:$LOCAL_TAG
+            - docker push 386123533085.dkr.ecr.us-east-1.amazonaws.com/cops/bb-admin:$LOCAL_TAG

@@ -1,0 +1,227 @@
+# global apricot project repo config file
+# sourced from apricot.git
+repo:
+  description: This is the default description of a repo within the APRICOT space.
+  project:
+    key: APRICOT
+
+default-reviewers:
+  - jruiz@socialsolutions.com
+  - aage@socialsolutions.com
+  - lstevens@socialsolutions.com
+  - mflores@socialsolutions.com
+  - atovar@socialsolutions.com
+  - lhaley@socialsolutions.com
+  - tgregory@socialsolutions.com
+  - lcephas@socialsolutions.com
+
+branch-restrictions:
+  # Removing all default branch restrictions & writing from scratch
+  master-approvals-to-merge: null
+  master-merge-default-reviewers: null
+  master-restrict-push: null
+  master-restrict-force: null
+  master-restrict-delete: null
+  develop-approvals-to-merge: null
+  develop-merge-default-reviewers: null
+  develop-restrict-force: null
+  develop-restrict-delete: null
+  develop-restrict-push: null
+  bugfix-restrict-force-branching-model: null
+  hotfix-restrict-delete-branching-model: null
+  feature-restrict-force-branching-model: null
+  hotfix-restrict-force-branching-model: null
+  release-restrict-force-branching-model: null
+  master-reset-pr-approvals:
+    kind: reset_pullrequest_approvals_on_change
+    users: []
+    pattern: master
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  master-merge-checks:
+    kind: enforce_merge_checks
+    pattern: master
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  master-req-pass-builds:
+    kind: require_passing_builds_to_merge
+    users: []
+    pattern: master
+    value: 1
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  release-delete-restriction:
+    kind: delete
+    users: []
+    pattern: release/*
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  release-req-approvals-merge:
+    kind: require_approvals_to_merge
+    users: []
+    pattern: release/*
+    value: 2
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  release-reset-pr-approvals:
+    kind: reset_pullrequest_approvals_on_change
+    users: []
+    pattern: release/*
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  release-require-tasks-completed:
+    kind: require_tasks_to_be_completed
+    users: []
+    pattern: release/*
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  release-merge-checks:
+    kind: enforce_merge_checks
+    users: []
+    pattern: release/*
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  release-force-restrict:
+    kind: force
+    users: []
+    pattern: release/*
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  develop-require-completed-tasks:
+    kind: require_tasks_to_be_completed
+    users: []
+    pattern: develop
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  develop-push-restriction:
+    kind: push
+    users: []
+    pattern: develop
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  develop-req-approvals-to-merge:
+    kind: require_approvals_to_merge
+    users: []
+    pattern: develop
+    value: 2
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  develop-reset-pr-approvals:
+    kind: reset_pullrequest_approvals_on_change
+    users: []
+    pattern: develop
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  develop-restrict-merge-checks:
+    kind: enforce_merge_checks
+    users: []
+    pattern: develop
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  develop-force-restrict:
+    kind: force
+    users: []
+    pattern: develop
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  develop-delete-restrict:
+    kind: delete
+    users: []
+    pattern: develop
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  master-restrict-merge-apricot-approvers:
+    kind: restrict_merges
+    users: []
+    pattern: master
+    value: null
+    branch_match_kind: glob
+    groups:
+      - name: Apricot Approvers
+        owner:
+          username: social-solutions
+        type: group
+        slug: apricot-approvers
+    type: branchrestriction
+  develop-restrict-merge-approvers-team:
+    kind: restrict_merges
+    users: []
+    pattern: develop
+    value: null
+    branch_match_kind: glob
+    groups:
+      - name: Apricot Approvers
+        owner:
+          username: social-solutions
+        type: group
+        slug: apricot-approvers
+    type: branchrestriction
+  master-push-restrict:
+    kind: push
+    users: []
+    pattern: master
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  master-require-tasks-completed:
+    kind: require_tasks_to_be_completed
+    users: []
+    pattern: master
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  master-require-approvals-merge:
+    kind: require_approvals_to_merge
+    users: []
+    pattern: master
+    value: 3
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  master-force-restrict:
+    kind: force
+    users: []
+    pattern: master
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction
+  master-delete-restrict:
+    kind: delete
+    users: []
+    pattern: master
+    value: null
+    branch_match_kind: glob
+    groups: []
+    type: branchrestriction

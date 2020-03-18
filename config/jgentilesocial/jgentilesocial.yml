@@ -1,0 +1,22 @@
+# example file - exists only as a reference.
+global:
+  # Example: Point this at a personal space outside of socialsolutions.
+  workspace: jgentilesocial
+repo:
+  description: This is the description of a repo within the jgentilesocial space. This file exists for config reference only.
+  # Override repo.language
+  language: python
+
+pipelines-environments:
+  prod:
+    restrictions:
+      # Allow non-admins to deploy to the prod environment.
+      admin_only: false
+
+branch-restrictions:
+  # Pretending there IS no master branch - so remove its restrictions.
+  master-approvals-to-merge: null
+  master-merge-default-reviewers: null
+  master-restrict-push: null
+  master-restrict-force: null
+  master-restrict-delete: null
