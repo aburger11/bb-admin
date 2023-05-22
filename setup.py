@@ -8,7 +8,7 @@ setup(
     install_requires=[
         'Click==7.0',
         'PyYAML==5.3',
-        'requests==2.23.0',
+        'requests==2.31.0',
         'deepmerge==0.1.0'
     ],
     entry_points='''
